@@ -4,7 +4,7 @@ import java.util.Map;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 
-@MCVersion(value = "1.7.2")
+@MCVersion(value = "1.7.10")
 public class FMLLoadingPlugin implements IFMLLoadingPlugin {
 
 	public FMLLoadingPlugin() {
