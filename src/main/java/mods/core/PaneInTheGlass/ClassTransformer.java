@@ -25,17 +25,17 @@ public class ClassTransformer implements IClassTransformer {
 			nameRegistry = new NameRegistry();
 			
 			// BlockPane
-			nameRegistry.RegisterSrgName("CL: net/minecraft/block/BlockPane amm");
-			nameRegistry.RegisterSrgName("MD: net/minecraft/block/BlockPane/canPaneConnectToBlock (Lnet/minecraft/block/Block;)Z amm/a (Lahu;)Z");
+			nameRegistry.RegisterSrgName("CL: net/minecraft/block/BlockPane aoa");
+			nameRegistry.RegisterSrgName("MD: net/minecraft/block/BlockPane/canPaneConnectToBlock (Lnet/minecraft/block/Block;)Z aoa/a (Laji;)Z");
 	
 			// BlockStairs
-			nameRegistry.RegisterSrgName("CL: net/minecraft/block/BlockStairs ame");		
-			nameRegistry.RegisterSrgName("MD: net/minecraft/block/BlockStairs/getRenderBlockPass ()I ame/w ()I");
-			nameRegistry.RegisterSrgName("MD: net/minecraft/block/BlockStairs/getRenderType ()I ame/b ()I");
+			nameRegistry.RegisterSrgName("CL: net/minecraft/block/BlockStairs ans");
+			nameRegistry.RegisterSrgName("MD: net/minecraft/block/BlockStairs/getRenderBlockPass ()I ans/w ()I");
+			nameRegistry.RegisterSrgName("MD: net/minecraft/block/BlockStairs/getRenderType ()I ans/b ()I");
 					
 			// WorldRenderer
-			nameRegistry.RegisterSrgName("CL: net/minecraft/client/renderer/WorldRenderer blg");
-			nameRegistry.RegisterSrgName("MD: net/minecraft/client/renderer/WorldRenderer/preRenderBlocks (I)V blg/b (I)V");
+			nameRegistry.RegisterSrgName("CL: net/minecraft/client/renderer/WorldRenderer blo");
+			nameRegistry.RegisterSrgName("MD: net/minecraft/client/renderer/WorldRenderer/preRenderBlocks (I)V blo/b (I)V");
 			
 			FMLLog.info("Getting class names");
 			
