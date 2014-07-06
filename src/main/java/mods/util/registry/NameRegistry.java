@@ -102,7 +102,7 @@ public class NameRegistry {
 		{
 			isObfuscated = true;
 		}*/
-		isObfuscated = false;
+		isObfuscated = true;
 				
 		/*if (testType.getInternalName().endsWith("Block"))
 			isObfuscated = false;
