@@ -21,13 +21,15 @@ public class ClassTransformer implements IClassTransformer {
 	public ClassTransformer() {
 				
 		try
-		{		
+		{
+			LogInfo("Mod v" + ModContainer.MOD_VERSION + " startup");
+			
 			nameRegistry = new NameRegistry();
 			
 			// BlockPane
 			nameRegistry.RegisterSrgName("CL: net/minecraft/block/BlockPane aoa");
 			nameRegistry.RegisterSrgName("MD: net/minecraft/block/BlockPane/canPaneConnectToBlock (Lnet/minecraft/block/Block;)Z aoa/a (Laji;)Z");
-	
+			
 			// BlockStairs
 			nameRegistry.RegisterSrgName("CL: net/minecraft/block/BlockStairs ans");
 			nameRegistry.RegisterSrgName("MD: net/minecraft/block/BlockStairs/getRenderBlockPass ()I ans/w ()I");
@@ -37,7 +39,7 @@ public class ClassTransformer implements IClassTransformer {
 			nameRegistry.RegisterSrgName("CL: net/minecraft/client/renderer/WorldRenderer blo");
 			nameRegistry.RegisterSrgName("MD: net/minecraft/client/renderer/WorldRenderer/preRenderBlocks (I)V blo/b (I)V");
 			
-			FMLLog.info("Getting class names");
+			LogInfo("Getting class names");
 			
 			blockPaneClassName = nameRegistry.getClassName("net/minecraft/block/BlockPane").replace('/', '.');
 			blockStairsClassName = nameRegistry.getClassName("net/minecraft/block/BlockStairs").replace('/', '.');
@@ -45,19 +47,31 @@ public class ClassTransformer implements IClassTransformer {
 		}
 		catch (Exception e)
 		{
-			FMLLog.severe("UH OH: " + e.toString());			
+			LogSevere("in ClassTransformer(): " + e.toString());			
 		}
 	}
-
+	
+	protected void LogInfo(String msg)
+	{
+		FMLLog.info("[PaneInTheGlass] " + msg);
+	}
+	
+	protected void LogSevere(String msg)
+	{
+		FMLLog.severe("[PaneInTheGlass] " + msg);		
+	}
+	
 	@Override
 	public byte[] transform(String className, String transformedName, byte[] basicClass) {
 		
 		if (className.equals(blockPaneClassName) || className.equals(blockStairsClassName) || className.equals(worldRendererClassName))
 		{
+			LogInfo("Transforming " + className);
 			return patchClass(className, basicClass);
 		}
 		else
 		{
+			//FMLLog.info("PITG: Ignoring " + className);
 			return basicClass;
 		}				
 	}
@@ -78,21 +92,25 @@ public class ClassTransformer implements IClassTransformer {
 			if (className.equals(blockPaneClassName)
 					&& nameRegistry.MethodIs(m, "net/minecraft/block/BlockPane/canPaneConnectToBlock (Lnet/minecraft/block/Block;)Z"))
 			{
+				LogInfo("Patching BlockPane.canPaneConnectToBlock...");
 				patchBlockPane_canPaneConnectToBlock(m);
 			}
 			else if (className.equals(blockStairsClassName)
 					&& nameRegistry.MethodIs(m, "net/minecraft/block/BlockStairs/getRenderBlockPass ()I"))
 			{
+				LogInfo("Patching BlockStairs.getRenderBlockPass...");
 				patchBlockStairs_getRenderBlockPass(m);
 			}
 			else if (className.equals(blockStairsClassName)
 					&& nameRegistry.MethodIs(m, "net/minecraft/block/BlockStairs/getRenderType ()I"))
 			{
+				LogInfo("Patching BlockStairs.getRenderType...");
 				patchBlockStairs_getRenderType(m);
 			}
 			else if (className.equals(worldRendererClassName)
 					&& nameRegistry.MethodIs(m, "net/minecraft/client/renderer/WorldRenderer/preRenderBlocks (I)V"))
 			{
+				LogInfo("Patching WorldRenderer.preRenderBlocks...");
 				patchWorldRenderer_preRenderBlocks(m);
 			}
 		}

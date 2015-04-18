@@ -18,6 +18,8 @@ public class ModContainer extends DummyModContainer {
 
 	public static BlockRenderer modBlockRenderer = null;	
 	
+	public static final String MOD_VERSION = "1.2.0";
+	
 	public ModContainer()
 	{
 		super(new ModMetadata());
@@ -25,9 +27,9 @@ public class ModContainer extends DummyModContainer {
 		ModMetadata meta = getMetadata();
 		meta.modId = "PaneInTheGlass";
 		meta.name = "Pane In The Glass CoreMod";
-		meta.version = "1.1.0";
+		meta.version = MOD_VERSION;
 		meta.credits = "";
-		meta.authorList = Arrays.asList("heaton84");
+		meta.authorList = Arrays.asList("heaton84", "Techokami", "Justin Aquadro", "Christopher Trumbour");
 		meta.description = "Glass that connects to stairs";
 		meta.url = "http://www.minecraftforum.net/topic/2450118-172forge-paneintheglass-10/";
 		meta.updateUrl = "";
